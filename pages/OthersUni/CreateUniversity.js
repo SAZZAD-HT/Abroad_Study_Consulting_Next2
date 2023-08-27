@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';import SessionCheck from '../api/sessioncheck';
+import MyLayout from '../component/layout';
+import AdminDrawer from '../component/admindrawer';
+import Footer from '../component/footer';
 
 const CreateUniversity = () => {
   const router = useRouter();

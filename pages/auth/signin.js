@@ -45,10 +45,11 @@ export default function SignIn() {
       if (Status === 'admin') {
        
         sessionStorage.setItem('token', 'admin');
-        router.push('/OthersUni/CreateALL');
+        router.push('/DeaprtmentHome/DepartmentHome');
       } else {
         sessionStorage.setItem('token', 'user');
         alert(sessionStorage.getItem('token'));
+ 
         router.push('/OthersUni/CreateALL');
         
       }

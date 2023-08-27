@@ -12,6 +12,11 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/OthersUni/CreateALL": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/OthersUni/CreateALL.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -22,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/admin/dashboard/users/[id]": [
+    "/admin/dashboard/addadmin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/admin/dashboard/users/[id].js"
+      "static/chunks/pages/admin/dashboard/addadmin.js"
     ],
     "/auth/signin": [
       "static/chunks/webpack.js",

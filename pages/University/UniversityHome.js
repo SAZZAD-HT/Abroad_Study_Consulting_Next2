@@ -53,7 +53,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <MyLayout title="StudyAbroad" />
+  <MyLayout title="Add Admin" />
+            <AdminDrawer />
       <div className="p-4">
         <h1 className="text-2xl font-bold">University Home Page</h1>
         

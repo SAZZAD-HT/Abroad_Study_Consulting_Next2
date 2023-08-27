@@ -5,10 +5,14 @@ export default function SessionCheck () {
   const router = useRouter();
 
   useEffect(() => {
-    const session = sessionStorage.getItem('email');
+    const session = sessionStorage.getItem('admin');
+
     if (!session) {
-      router.push('/auth/signin');
+      const session = sessionStorage.getItem('user');
+      if (!session) {
+      router.push('/auth/signin');}
     }
+    
   }, []);
   return null;
 };

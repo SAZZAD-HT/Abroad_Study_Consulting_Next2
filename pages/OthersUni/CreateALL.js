@@ -1,9 +1,14 @@
 import Link from 'next/link';
+
+import SessionCheck from '../api/sessioncheck';
 import MyLayout from '../component/layout';
+import AdminDrawer from '../component/admindrawer';
 import Footer from '../component/footer';
 
 const UniHeart = () => {
-  return (<>  <MyLayout title="StudyAbroad" />
+  return (<>  <MyLayout title="Add Admin" />
+  <SessionCheck />
+        <AdminDrawer />
   
     <div className="text-center mt-16">
       <h1 className="text-4xl font-bold mb-8">Create ALL </h1>
