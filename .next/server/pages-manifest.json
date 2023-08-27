@@ -1,9 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/admin/dashboard/addadmin": "pages/admin/dashboard/addadmin.js",
-  "/admin/dashboard/findusers": "pages/admin/dashboard/findusers.js",
-  "/auth/signin": "pages/auth/signin.js",
-  "/OthersUni/CreateALL": "pages/OthersUni/CreateALL.js"
-}
