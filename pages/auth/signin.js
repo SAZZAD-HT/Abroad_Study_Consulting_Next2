@@ -12,16 +12,8 @@ export default function SignIn() {
   const router = useRouter();
 
   const validateForm = () => {
-    if(!email && !password) {
-      setError('Please enter a email and password');
-      return false;
-    }
-    else if (!email) {
-      setError('Please enter a email');
-      return false;
-    }
-    else if (!password) {
-      setError('Please enter a password');
+    if (!email || !password) {
+      setError('Please enter both email and password');
       return false;
     }
     setError('');
@@ -29,7 +21,7 @@ export default function SignIn() {
   };
 
   const handleSubmit = async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
     if (!validateForm()) {
       return;
@@ -37,11 +29,35 @@ export default function SignIn() {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:3001/admin/signin', { email, password });
-      sessionStorage.setItem('email', response.data.email);
-      router.push('/admin/dashboard');
+      const response = await axios.post('http://localhost:3002/Login/signin', {
+        DeptEmail: email,
+        DeptPassword: password,
+      });
+
+ 
+      //  alert(response.status);
+    if (response.status === 201) {
+
+     
+     
+      const { Status, token } = response.data;
+      
+      if (Status === 'admin') {
+       
+        sessionStorage.setItem('token', 'admin');
+        router.push('/OthersUni/CreateALL');
+      } else {
+        sessionStorage.setItem('token', 'user');
+        alert(sessionStorage.getItem('token'));
+        router.push('/OthersUni/CreateALL');
+        
+      }
+      ;
+      } else {
+        setError('Invalid login');
+      }
     } catch (error) {
-      console.log('error22: ' + error.message);
+      console.error('Error:', error);
       setError('Invalid login');
     } finally {
       setLoading(false);
@@ -78,7 +94,8 @@ export default function SignIn() {
             <button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:ring focus:ring-blue-300"
-              disabled={loading}>
+              disabled={loading}
+            >
               {loading ? 'Logging In...' : 'Login'}
             </button>
             {error && <p className="text-red-500 mt-2">{error}</p>}

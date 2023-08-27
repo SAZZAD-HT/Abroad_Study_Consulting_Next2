@@ -37,7 +37,7 @@ export default function AddAdmin() {
     };
     return (
         <>
-            <SessionCheck />
+           
             <MyLayout title="Add Admin" />
             <AdminDrawer />
             <div class="pt-9 sm:ml-64">
