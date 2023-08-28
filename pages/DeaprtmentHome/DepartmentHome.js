@@ -25,8 +25,8 @@ const AdminDashboard = ({ data }) => {
 
   return (<>
   <MyLayout title="Add Admin" />
-            <AdminDrawer />
-            <SessionCheck />
+          
+         
     <div className="container mx-auto mt-10">
       <h1 className="text-2xl font-bold mb-5">Admin Dashboard</h1>
       <button

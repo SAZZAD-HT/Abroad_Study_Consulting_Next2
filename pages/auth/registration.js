@@ -14,7 +14,7 @@ const RegistrationForm = () => {
   const router = useRouter();
 
   const validateForm = () => {
-    if (!username && !email && !password && !address) {
+    if (!username && !email && !password ) {
       setError('Please fill up the form');
       return false;
     } else if (!username) {
@@ -42,9 +42,9 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if () {
-    //   return false;
-    // }
+    if (!validateForm()) {
+      return false;
+    }
     try {
       setLoading(true);
       const response = await axios.post('http://localhost:3002/Login/create', {

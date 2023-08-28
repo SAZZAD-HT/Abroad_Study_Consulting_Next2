@@ -38,7 +38,8 @@ const UniversityView = () => {
     }
   };
 
-  return (
+  return (<>
+    <MyLayout title="Add Admin" />
     <div className="container mx-auto mt-8">
       {universityData && (
         <div className="flex bg-gradient-to-r from-blue-500 via-green-400 to-yellow-300 text-white rounded-lg shadow-md p-8 animate-pulse">
@@ -84,7 +85,7 @@ const UniversityView = () => {
           </div>
         </div>
       )}
-    </div>
+    </div></>
   );
 };
 

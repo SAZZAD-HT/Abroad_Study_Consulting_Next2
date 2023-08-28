@@ -39,15 +39,19 @@ export default function SignIn() {
     if (response.status === 201) {
 
      
-     
+     localStorage.setItem('Id', response.data.DepartmentId);
+     localStorage.setItem('staus', response.data.Status);
+
       const { Status, token } = response.data;
+
       
-      if (Status === 'admin') {
+      
+      if (response.data.Status === 'admin') {
        
-        sessionStorage.setItem('token', 'admin');
+       
         router.push('/DeaprtmentHome/DepartmentHome');
       } else {
-        sessionStorage.setItem('token', 'user');
+        
         alert(sessionStorage.getItem('token'));
  
         router.push('/OthersUni/CreateALL');
