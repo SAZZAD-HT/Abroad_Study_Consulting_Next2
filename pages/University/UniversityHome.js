@@ -1,63 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MyLayout from '../component/layout';
 import Footer from '../component/footer';
-import Link from "next/link";
+import Link from 'next/link';
 
 const Dashboard = () => {
   const [universityData, setUniversityData] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [uniTable, setUniTable] = useState([]); // Changed the state variable name
-
+  const [uniTable, setUniTable] = useState([]);
   useEffect(() => {
-    // Fetch university data when the component mounts
+   
+    fetchUniTable();
     fetchUniversityData();
-    fetchUniTable(); // Changed the function name here
+   
   }, []);
 
   const fetchUniversityData = async () => {
     try {
-      // Create a payload with the search term
+     
       const payload = {
         search: searchTerm,
       };
-      
-      // Fetch university data based on the payload
+
+     
       const response = await axios.post('http://localhost:3002/University/UniversityLanding', payload);
+
       
-      // Assuming the response contains university data
       setUniversityData(response.data.university);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const fetchUniTable = async () => { // Changed the function name here
+  const fetchUniTable = async () => {
     try {
       const response = await axios.get('http://localhost:3002/University');
+
       
-      // Assuming the response contains university data
-      setUniTable(response.data); // Changed the state variable name here
+      setUniTable(response.data); 
     } catch (error) {
       console.error(error);
     }
   };
 
   const handleSearch = () => {
-    // Trigger the search when the button is clicked
+    
     fetchUniversityData();
   };
- 
 
   return (
     <>
-  <MyLayout title="Add Admin" />
-            <AdminDrawer />
+      <MyLayout title="Add Admin" />
+
       <div className="p-4">
         <h1 className="text-2xl font-bold">University Home Page</h1>
-        
+
         <div className="mt-4 flex space-x-2">
           <input
             type="text"
@@ -110,13 +107,13 @@ const Dashboard = () => {
                 uniTable.map((university) => (
                   <tr key={university.IdUniversity}>
                     <td className="border px-4 py-2">
-                    <td className="border px-4 py-2">
-                    <Link href={`./UniversityView/${university.IdUniversity}`} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:bg-gray-700">
-                      {university.UniversityName}
-                    </Link>
-                  </td>
-                     </td>
-                  
+                      <Link
+                        href={`./UniversityView/${university.IdUniversity}`}
+                        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:bg-gray-700"
+                      >
+                        {university.UniversityName}
+                      </Link>
+                    </td>
                     <td className="border px-4 py-2">{university.UniversityAddress}</td>
                     <td className="border px-4 py-2">{university.UniversityPhone}</td>
                     <td className="border px-4 py-2">{university.UniversityEmail}</td>
@@ -131,7 +128,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };
